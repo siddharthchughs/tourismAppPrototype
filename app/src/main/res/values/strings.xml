@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">TourismAppMockUp</string>
+    <string name="placeholder_search">Search</string>
+    <string name="placeholder_username">Username</string>
+    <string name="placeholder_password">Password</string>
+    <string name="label_login">Login</string>
+    <string name="label_submit">Submit</string>
+    <string name="bottom_nav_title_trips">Trips</string>
+    <string name="bottom_nav_title_home">Home</string>
+    <string name="bottom_nav_title_favorite">Favorite</string>
+    <string name="bottom_nav_title_myprofile">My Profile</string>
+    <string name="label_navigation">Navigation Bar</string>
+    <string name="title_home">Explore Hawaii</string>
+    <string name="title_myprofile">My Profile</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_trip">Trip</string>
+    <string name="rating_label">Rating</string>
+    <string name="rating_no">4.5</string>
+    <string name="label_location">Norway</string>
+    <string name="title_explore">Explore</string>
+    <string name="label_category">Category</string>
+    <string name="label_popular">Popular PLaces</string>
+    <string name="label_recommend">Recommend</string>
+    <string name="label_next_trip">Plan your Next Trip</string>
+    <string name="place_detail_place_description">
+        The Portuguese Reading Section consists of carefully written texts for beginners,
+        as well as corresponding questions, all of which have been conceived by experienced
+        and highly qualified language teachers. This means that anyone who wants to become a better reader
+        and/or speaker of Portuguese can do so at their own pace by consulting the resource.
+    </string>
+    <string name="title_detail">Detail</string>
+    <string name="place_detail_what_we_offer">What we offer</string>
+    <string name="label_see_all">See All</string>
 </resources>
