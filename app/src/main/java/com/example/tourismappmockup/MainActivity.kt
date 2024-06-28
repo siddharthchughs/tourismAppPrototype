@@ -30,27 +30,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-@Composable
-fun MainNavController() {
-    val navController = rememberNavController()
-    MainNavHostController(navHostController = navController)
-}
-
-@Composable
-fun MainNavHostController(navHostController: NavHostController) {
-    NavHost(navController = navHostController, startDestination = Route.HomeScreen.route) {
-
-        composable(route = Route.HomeScreen.route) {
-            HomeScreen(navHostController = navHostController)
-        }
-        composable(route = Route.DetailScreen.route) {
-            DetailScreen()
-        }
-    }
-}
-
-sealed class Route(val route: String) {
-    object HomeScreen : Route("Home")
-    object DetailScreen : Route("Detail")
-}

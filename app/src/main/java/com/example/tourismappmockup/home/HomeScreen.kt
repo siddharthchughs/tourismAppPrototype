@@ -1,5 +1,6 @@
 package com.example.tourismappmockup.home
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,10 +18,13 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.ArrowForward
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -28,6 +32,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,13 +44,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.tourismappmockup.R
 import com.example.tourismappmockup.align_body_elements.CategoryElements
 import com.example.tourismappmockup.align_body_elements.PopularElement
 import com.example.tourismappmockup.align_body_elements.RecommendElement
+import com.example.tourismappmockup.bottomnavigation.Route
 
 @Composable
-fun HomeScreen(navHostController: NavHostController) {
+fun HomeScreen(navHostController: NavHostController = rememberNavController()) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
@@ -52,14 +60,26 @@ fun HomeScreen(navHostController: NavHostController) {
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.surface)
     ) {
-        HomeScreenToolbar()
-        HomeScreenStructure(navHostController = navHostController)
+        HomeScreenToolbar(
+            navHostController = navHostController
+        )
+        HomeScreenStructure(
+            navHostController = navHostController
+        )
     }
 }
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreenToolbar() {
+fun HomeScreenToolbar(
+    navHostController: NavHostController
+) {
+
+    val isMenuDisplayed = remember {
+        mutableStateOf(false)
+    }
+
     TopAppBar(
         modifier = Modifier
             .fillMaxWidth()
@@ -71,6 +91,25 @@ fun HomeScreenToolbar() {
         },
         navigationIcon = {},
         actions = {
+            IconButton(onClick = {
+                isMenuDisplayed.value = !isMenuDisplayed.value
+            }) {
+                Image(
+                    Icons.Default.MoreVert, contentDescription = stringResource(R.string.menu_more)
+                )
+            }
+
+            DropdownMenu(
+                expanded = isMenuDisplayed.value,
+                onDismissRequest = { isMenuDisplayed.value = !isMenuDisplayed.value }
+            ) {
+                DropdownMenuItem(
+                    text = { Text(text = stringResource(R.string.menu_item_user_account)) },
+                    onClick = {
+                        navHostController.navigate(Route.Profile.route)
+                    }
+                )
+            }
             IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.Default.Search,
@@ -91,34 +130,17 @@ fun HomeScreenToolbar() {
 @Composable
 fun HomeScreenStructure(
     modifier: Modifier = Modifier,
-    navHostController: NavHostController) {
+    navHostController: NavHostController
+) {
     Column(
         modifier = modifier
-                .background(MaterialTheme.colorScheme.surface)
+            .background(MaterialTheme.colorScheme.surface)
 
     ) {
         AlignedBodyStructure()
         PopularStructure()
-        RecommendStructure(navHostController = navHostController )
+        RecommendStructure(navHostController = navHostController)
     }
-}
-
-@Composable
-fun HeaderTitle(modifier: Modifier = Modifier) {
-    Column {
-        Text(
-            text = stringResource(R.string.title_explore),
-            modifier = modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .padding(start = 16.dp),
-            style = TextStyle(
-                color = MaterialTheme.colorScheme.primary,
-                fontSize = MaterialTheme.typography.titleLarge.fontSize
-            )
-        )
-    }
-
 }
 
 @Composable
@@ -136,17 +158,17 @@ fun AlignedBodyStructure() {
 
 @Composable
 fun CategoryHeaderLabel(modifier: Modifier = Modifier) {
-        Text(
-            text = stringResource(R.string.label_category),
-            modifier = modifier
-                .fillMaxWidth()
-                .wrapContentHeight()
-                .padding(start = 16.dp),
-            style = TextStyle(
-                color = MaterialTheme.colorScheme.onBackground,
-                fontSize = MaterialTheme.typography.titleMedium.fontSize
-            )
+    Text(
+        text = stringResource(R.string.label_category),
+        modifier = modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(start = 16.dp),
+        style = TextStyle(
+            color = MaterialTheme.colorScheme.onBackground,
+            fontSize = MaterialTheme.typography.titleMedium.fontSize
         )
+    )
 }
 
 @Composable
@@ -217,7 +239,7 @@ fun PopularHeaderLabel(modifier: Modifier = Modifier) {
                     onClick = {}
                 ),
             style = TextStyle(
-                color = MaterialTheme.colorScheme.tertiary,
+                color = MaterialTheme.colorScheme.primary,
                 fontSize = MaterialTheme.typography.titleMedium.fontSize
             ),
             textAlign = TextAlign.End
@@ -293,7 +315,7 @@ fun RecommendHeaderLabel(modifier: Modifier = Modifier) {
                     onClick = {}
                 ),
             style = TextStyle(
-                color = MaterialTheme.colorScheme.tertiary,
+                color = MaterialTheme.colorScheme.primary,
                 fontSize = MaterialTheme.typography.titleMedium.fontSize
             ),
             textAlign = TextAlign.End
@@ -305,7 +327,7 @@ fun RecommendHeaderLabel(modifier: Modifier = Modifier) {
 fun RecommendElementList(
     modifier: Modifier = Modifier,
     navHostController: NavHostController
-    ) {
+) {
     LazyRow(
         userScrollEnabled = true,
         modifier = modifier
@@ -330,7 +352,6 @@ fun RecommendElementList(
 
 @Composable
 fun NextTripStructure(modifier: Modifier = Modifier) {
-
     Spacer(
         modifier = modifier
             .heightIn(min = 40.dp)
@@ -338,7 +359,7 @@ fun NextTripStructure(modifier: Modifier = Modifier) {
 
     Button(onClick = {
 
-    }){
+    }) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceEvenly,
@@ -358,9 +379,10 @@ fun NextTripStructure(modifier: Modifier = Modifier) {
                     fontSize = MaterialTheme.typography.bodyMedium.fontSize
                 )
             )
-            Icon(modifier = modifier
-                , imageVector = Icons.Outlined.ArrowForward,
-                contentDescription = null)
+            Icon(
+                modifier = modifier, imageVector = Icons.Outlined.ArrowForward,
+                contentDescription = null
+            )
         }
     }
 }

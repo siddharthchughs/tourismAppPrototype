@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.tourismappmockup.R
-import com.example.tourismappmockup.bottomnavigation.BottomBarScreen
+import com.example.tourismappmockup.bottomnavigation.Route
 
 @Composable
 fun RecommendElement(
@@ -54,7 +54,7 @@ fun RecommendElement(
             .wrapContentWidth(unbounded = true)
             .heightIn(min = 110.dp)
             .clickable(onClick = {
-                navHOstController.navigate(BottomBarScreen.DetailScreen.route)
+                navHOstController.navigate(Route.Detail.route)
             }
             )
             .clip(RoundedCornerShape(size = 16.dp))

@@ -31,4 +31,7 @@
     <string name="title_detail">Detail</string>
     <string name="place_detail_what_we_offer">What we offer</string>
     <string name="label_see_all">See All</string>
+    <string name="back">Navigate back</string>
+    <string name="menu_item_user_account">Profile</string>
+    <string name="menu_more">Menu</string>
 </resources>

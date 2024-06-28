@@ -4,14 +4,14 @@ import androidx.lifecycle.ViewModel
 import javax.inject.Inject
 
 
-sealed interface HomeUIState{
-
-}
-
-
-class HomeViewModel @Inject constructor() : ViewModel(){
-
-}
+//sealed interface HomeUIState{
+//
+//}
+//
+//
+//class HomeViewModel @Inject constructor() : ViewModel(){
+//
+//}
 
 val listOfCategories = listOf(
     "Flights",
