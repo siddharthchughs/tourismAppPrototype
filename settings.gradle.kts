@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TourismAppPrototype"
 include(":app")
- 
+include(":myweatherapp")

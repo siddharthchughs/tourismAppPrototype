@@ -19,7 +19,7 @@
     <string name="label_location">Norway</string>
     <string name="title_explore">Explore</string>
     <string name="label_category">Category</string>
-    <string name="label_popular">Popular PLaces</string>
+    <string name="label_popular">Popular Places</string>
     <string name="label_recommend">Recommend</string>
     <string name="label_next_trip">Plan your Next Trip</string>
     <string name="place_detail_place_description">
@@ -28,10 +28,21 @@
         and highly qualified language teachers. This means that anyone who wants to become a better reader
         and/or speaker of Portuguese can do so at their own pace by consulting the resource.
     </string>
+    <string name="detail_description">
+        Portuguese is one of the many languages whose text corpora are included in
+        Sketch Engine, a tool for discovering how language works.
+        Sketch Engine is designed for linguists, lexicologists, lexicographers,
+        researchers, translators, terminologists, teachers and students working
+        with Portuguese to easily discover what is typical and frequent in
+        the language and to notice phenomena which would go unnoticed without a
+        large sample of Portuguese text.
+    </string>
     <string name="title_detail">Detail</string>
     <string name="place_detail_what_we_offer">What we offer</string>
     <string name="label_see_all">See All</string>
     <string name="back">Navigate back</string>
     <string name="menu_item_user_account">Profile</string>
     <string name="menu_more">Menu</string>
+    <string name="label_read_more">Read more</string>
+    <string name="label_read_less">Read less</string>
 </resources>
