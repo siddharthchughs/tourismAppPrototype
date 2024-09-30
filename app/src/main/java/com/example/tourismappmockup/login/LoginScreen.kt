@@ -182,7 +182,6 @@ fun LoginUsrnameInputText(
         placeholder = stringResource(R.string.placeholder_username),
         keyboardActions = KeyboardActions(
             onNext = {
-
                 focusManager.moveFocus(FocusDirection.Next)
             }
         ),
@@ -246,6 +245,7 @@ fun LoginPasswordInputText(
         ),
         keyboardActions = KeyboardActions(
             onDone = {
+
                 focusManager.clearFocus()
             }
         )

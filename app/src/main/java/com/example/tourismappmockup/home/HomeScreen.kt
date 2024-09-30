@@ -38,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -83,7 +84,7 @@ fun HomeScreenToolbar(
     TopAppBar(
         modifier = Modifier
             .fillMaxWidth()
-            .heightIn(56.dp),
+            .wrapContentHeight(),
         title = {
             Text(
                 text = stringResource(R.string.title_home)
@@ -91,11 +92,30 @@ fun HomeScreenToolbar(
         },
         navigationIcon = {},
         actions = {
+
+            IconButton(onClick = {}) {
+                Image(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "",
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
+                )
+            }
+
+            IconButton(onClick = {}) {
+                Image(
+                    imageVector = Icons.Outlined.Notifications,
+                    contentDescription = "",
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
+                )
+            }
+
             IconButton(onClick = {
                 isMenuDisplayed.value = !isMenuDisplayed.value
             }) {
                 Image(
-                    Icons.Default.MoreVert, contentDescription = stringResource(R.string.menu_more)
+                    imageVector = Icons.Default.MoreVert,
+                    contentDescription = stringResource(R.string.menu_more),
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary)
                 )
             }
 
@@ -108,18 +128,6 @@ fun HomeScreenToolbar(
                     onClick = {
                         navHostController.navigate(Route.Profile.route)
                     }
-                )
-            }
-            IconButton(onClick = {}) {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = ""
-                )
-            }
-            IconButton(onClick = {}) {
-                Icon(
-                    imageVector = Icons.Outlined.Notifications,
-                    contentDescription = ""
                 )
             }
         }
@@ -386,11 +394,4 @@ fun NextTripStructure(modifier: Modifier = Modifier) {
         }
     }
 }
-
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreviewHomeScreen() {
-}
-
 

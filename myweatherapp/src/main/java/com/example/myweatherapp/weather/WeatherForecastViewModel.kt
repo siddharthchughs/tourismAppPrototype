@@ -1,5 +1,7 @@
 package com.example.myweatherapp.weather
 
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.myweatherapp.settings.ApplicationSetting
 import com.example.myweatherapp.weather.WeatherNetworkClient.CityModel
@@ -48,6 +50,9 @@ class WeatherForecastViewModel @Inject constructor(
     private val applicationSetting: ApplicationSetting
 ) : ViewModel() {
 
+    val forecastList = mutableStateListOf<WeatherForecastUI>()
+    val cityForecastUIState = mutableStateOf(CityUI("","",0))
+
     val weatherUIState: Flow<ForecastUIState> = flow {
         emit(transform(applicationSetting.getBaseUrl().toString()))
     }
@@ -60,10 +65,14 @@ class WeatherForecastViewModel @Inject constructor(
                 val dayForecast = response.weatherForecastResponse.city.let(::transform)
                 val forecast = response.weatherForecastResponse.list.let(::transformW)
 
+                cityForecastUIState.value = dayForecast
+                forecastList.clear()
+                forecastList.addAll(forecast)
+
                 ForecastUIState.Loaded(
                     ForecastUI(
                         city = dayForecast,
-                        list = forecast
+                        list = forecastList
                     )
                 )
             }

@@ -57,6 +57,7 @@ fun MainNavHostController(navHostController: NavHostController, modifier: Modifi
                 }
             )
         }
+
         composable(
             route = Route.Detail.route+"/{main}"+"/{description}",
             arguments = listOf(
@@ -70,6 +71,7 @@ fun MainNavHostController(navHostController: NavHostController, modifier: Modifi
                 navHostController = navHostController
             )
         }
+
         composable(
             route = Route.CategorySelect.route+"/{id}",
             arguments = listOf(navArgument("id") { type = NavType.StringType })

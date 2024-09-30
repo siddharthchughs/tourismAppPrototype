@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TipCalculator</string>
+    <string name="header_label_perperson">Totoal Per Person</string>
+    <string name="text_split_label">Split</string>
+    <string name="text_tip_label">Tip</string>
+    <string name="title_label">Tip Calculator</string>
+    <string name="hint_text_total_bill">Enter total bill</string>
+    <string name="text_enter_bill">Enter bill</string>
+    <string name="refresh">Refresh</string>
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BizCardApp</string>
+    <string name="title_app">MyProfile</string>
+    <string name="profile_name">Siddharth Chugh</string>
+    <string name="profile_email_address">sid@gmail.com</string>
+    <string name="show_projects">Show Projects</string>
+</resources>

@@ -51,7 +51,7 @@ fun ForecastScreen(
 ) {
     val weatherForecastViewModel: WeatherForecastViewModel = hiltViewModel()
     val weatherForecastUIState =
-        weatherForecastViewModel.weatherUIState.collectAsStateWithLifecycle(initialValue = ForecastUIState.Loading).value
+        weatherForecastViewModel.weatherUIState.collectAsStateWithLifecycle(initialValue = ForecastUIState.Loading)
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -62,7 +62,9 @@ fun ForecastScreen(
     ) {
         ForecastToolbar(navigateToSettings = navigateToSettings)
         ForecastStructure(
-            weatherUI = weatherForecastUIState,
+            weatherUI = weatherForecastUIState.value,
+            cityUIState = weatherForecastViewModel.cityForecastUIState.value,
+            forecastListState = weatherForecastViewModel.forecastList,
             navigateToCategorySelected = navigateToCategorySelected,
             navigateToDetail = navigateToDetail
         )
@@ -122,6 +124,8 @@ fun ForecastToolbar(
 @Composable
 fun ForecastStructure(
     weatherUI: ForecastUIState,
+    cityUIState : CityUI,
+    forecastListState : List<WeatherForecastUI>,
     navigateToDetail: NavHostController,
     navigateToCategorySelected: NavHostController,
 ) {
@@ -137,8 +141,8 @@ fun ForecastStructure(
 
             is ForecastUIState.Loaded -> {
                 DayForecasts(
-                    weatherForecast = weatherUI.loadForecast.city,
-                    weatherForecastList = weatherUI.loadForecast.list,
+                    cityUIState = cityUIState,
+                    weatherForecastList = forecastListState,
                     navigateToCategorySelected = navigateToCategorySelected,
                     navigateToDetail = navigateToDetail
                 )
@@ -156,7 +160,7 @@ fun ForecastStructure(
 @Composable
 fun DayForecasts(
     modifier: Modifier = Modifier,
-    weatherForecast: CityUI,
+    cityUIState: CityUI,
     weatherForecastList: List<WeatherForecastUI>,
     navigateToCategorySelected: NavHostController,
     navigateToDetail:NavHostController
@@ -169,7 +173,7 @@ fun DayForecasts(
             modifier = modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp),
-            text = weatherForecast.name,
+            text = cityUIState.name,
             textAlign = TextAlign.Start,
             style = TextStyle(
                 fontSize = MaterialTheme.typography.titleLarge.fontSize
@@ -200,7 +204,6 @@ fun DayForecasts(
                 )
             }
         }
-
     }
 }
 
