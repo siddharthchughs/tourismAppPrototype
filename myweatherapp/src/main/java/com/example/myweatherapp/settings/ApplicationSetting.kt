@@ -15,13 +15,16 @@ import javax.inject.Inject
 private val USER_ONBOARDING_PREFERENCE = booleanPreferencesKey("onBoardPreferences")
 private val BASE_URL_PREFERENCE = stringPreferencesKey("baseUrl")
 private val USER_TOKEN_PREFERENCE = stringPreferencesKey("token")
+private val USER_API_KEY_PREFERENCE = stringPreferencesKey("api_key")
 
 interface ApplicationSetting {
-    fun token():Flow<String>
-    suspend fun saveToken(storeToken:String)
-     fun getBaseUrl(): Flow<String>
+    fun token(): Flow<String>
+    suspend fun saveToken(storeToken: String)
+    fun apiKey(): Flow<String>
+    suspend fun saveApiKey(apiKey: String)
+    fun getBaseUrl(): Flow<String>
     suspend fun saveBaseUrl(baseUrl: String)
-     fun getBoardingOnce(): Flow<Boolean>
+    fun getBoardingOnce(): Flow<Boolean>
     suspend fun saveBoarding(isOnBoardCompleted: Boolean)
 
 }
@@ -49,7 +52,7 @@ class ApplicationSettingImpl @Inject constructor(
         }
     }
 
-    override  fun getBaseUrl(): Flow<String> {
+    override fun apiKey(): Flow<String> {
         return dataStore.data
             .catch { exception ->
                 if (exception is IOException) {
@@ -58,7 +61,28 @@ class ApplicationSettingImpl @Inject constructor(
                     throw exception
                 }
             }.map { preferences ->
-                val baseUrl = preferences[BASE_URL_PREFERENCE] ?: "https://api.openweathermap.org/data/2.5/forecast/"
+                val api_key = preferences[USER_API_KEY_PREFERENCE] ?: ""
+                api_key
+            }
+    }
+
+    override suspend fun saveApiKey(apiKey: String) {
+        dataStore.edit { api_key ->
+            api_key[USER_API_KEY_PREFERENCE] = apiKey
+        }
+    }
+
+    override fun getBaseUrl(): Flow<String> {
+        return dataStore.data
+            .catch { exception ->
+                if (exception is IOException) {
+                    emit(emptyPreferences())
+                } else {
+                    throw exception
+                }
+            }.map { preferences ->
+                val baseUrl = preferences[BASE_URL_PREFERENCE]
+                    ?: "https://api.openweathermap.org/data/2.5/forecast/"
                 baseUrl
             }
     }
@@ -69,7 +93,7 @@ class ApplicationSettingImpl @Inject constructor(
         }
     }
 
-    override  fun getBoardingOnce(): Flow<Boolean> {
+    override fun getBoardingOnce(): Flow<Boolean> {
         return dataStore.data
             .catch { exception ->
                 if (exception is IOException) {

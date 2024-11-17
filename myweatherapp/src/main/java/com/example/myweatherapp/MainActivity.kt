@@ -36,7 +36,6 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainNavController() {
-
     val navController = rememberNavController()
     MainNavHostController(navHostController = navController)
 }

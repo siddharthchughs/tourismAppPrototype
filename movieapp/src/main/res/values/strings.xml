@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="title_home">Home</string>
+    <string name="title_detail">Detail</string>
+    <string name="text_title_home">Home\n</string>
+    <string name="text_title_detail">Detail</string>
+    <string name="menu_more_vert">menu</string>
+    <string name="settings">Setting</string>
+    <string name="highlight_text">Get</string>
+    <string name="sub_part_text">Things done \n Effortlessly</string>
+    <string name="label_genre">Genre</string>
+</resources>

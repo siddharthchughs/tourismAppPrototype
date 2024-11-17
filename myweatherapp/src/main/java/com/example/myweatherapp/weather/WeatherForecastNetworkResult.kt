@@ -80,7 +80,7 @@ interface WeatherNetworkClient {
         val lon: Double
     )
 
-    @GET("daily?lat=44.34&lon=10.99&cnt=7&appid=9727c3b4a52d540720270ecbc267f4c4")
+    @GET("daily?lat=44.34&lon=10.99&cnt=7&appid=abc098c77eb7b4274aa7b1ecababd36e")
     suspend fun getWeatherForecastList(
         @Header("baseurl") baseUrl: String
     ): Response<ForecastResponseModel>

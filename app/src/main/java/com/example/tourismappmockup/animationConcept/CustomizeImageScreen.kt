@@ -269,7 +269,7 @@ fun CustomIMageBlur(){
         val contrast = 2f // 0f..10f (1 should be default)
         val brightness = -180f // -255f..255f (0 should be default)
         Image(
-            painter = painterResource(R.drawable.baseline_account_balance),
+            painter = painterResource(R.drawable.ic_account),
             contentDescription = stringResource(R.string.detail_description),
             colorFilter = ColorFilter.tint(Color.Green, BlendMode.Hue),
            contentScale = ContentScale.Crop,

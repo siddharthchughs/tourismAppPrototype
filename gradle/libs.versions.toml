@@ -1,6 +1,8 @@
 [versions]
 agp = "8.5.2"
 kotlin = "1.9.0"
+google_service_version = "4.4.2"
+google_play_services_version = "21.2.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -17,6 +19,8 @@ okhttp = "4.12.0"
 serialization-json = "1.6.0"
 timber_version = "4.7.1"
 dataStore_version = "1.1.1"
+coil_version = "2.6.0"
+firebase_version ="33.6.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,6 +43,11 @@ com-squareup-retrofit2-converter-gson = { group = "com.squareup.retrofit2", name
 com-squareup-okhttp3-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 com-squareup-okhttp3-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 org-jetbrains-kotlinx-kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization-json" }
+com-google-firebase = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase_version" }
+com-google-firebase-analytics= {group = "com.google.firebase", name = "firebase-analytics"}
+com-google-firebase-auth= {group = "com.google.firebase", name = "firebase-auth"}
+com-google-firebase-firestore= {group = "com.google.firebase", name = "firebase-firestore"}
+com-google-android-gms-play-services-auth = {group = "com.google.android.gms", name ="play-services-auth",version.ref = "google_play_services_version"}
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStore_version" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
@@ -50,9 +59,12 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-material = { group = "androidx.compose.material", name = "material-icons-extended", version = "activityCompose" }
 com-jakewharton-timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber_version" }
+io-coil-kt-coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil_version" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+google-services = { id = "com.google.gms.google-services", version.ref = "google_service_version" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 org-jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 org-jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization-json" }

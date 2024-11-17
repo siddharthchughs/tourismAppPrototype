@@ -22,6 +22,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.bizcardapp.myprofile.MyProfileScreen
+import com.example.bizcardapp.myprofile.SelectionScreen
 import com.example.bizcardapp.ui.theme.TourismAppPrototypeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,16 +49,17 @@ fun CreateCard() {
 fun MainNavHostController(navHostController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(
         navController = navHostController,
-        startDestination = Route.MyProfile.route,
+        startDestination = Route.IndexSelection.route,
     ) {
-        composable(route = Route.MyProfile.route) {
-            MyProfileScreen()
+        composable(route = Route.IndexSelection.route) {
+            SelectionScreen()
         }
     }
 }
 
 
 sealed class Route(val route: String) {
+    object IndexSelection : Route("Selection")
     object MyProfile : Route("Profile")
     object Detail : Route("Detail")
 }
