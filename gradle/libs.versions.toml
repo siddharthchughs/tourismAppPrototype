@@ -3,6 +3,7 @@ agp = "8.5.2"
 kotlin = "1.9.0"
 google_service_version = "4.4.2"
 google_play_services_version = "21.2.0"
+coroutine_version = "1.5.2"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -20,7 +21,7 @@ serialization-json = "1.6.0"
 timber_version = "4.7.1"
 dataStore_version = "1.1.1"
 coil_version = "2.6.0"
-firebase_version ="33.6.0"
+firebase_version = "33.6.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -44,15 +45,19 @@ com-squareup-okhttp3-okhttp = { group = "com.squareup.okhttp3", name = "okhttp",
 com-squareup-okhttp3-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 org-jetbrains-kotlinx-kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization-json" }
 com-google-firebase = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase_version" }
-com-google-firebase-analytics= {group = "com.google.firebase", name = "firebase-analytics"}
-com-google-firebase-auth= {group = "com.google.firebase", name = "firebase-auth"}
-com-google-firebase-firestore= {group = "com.google.firebase", name = "firebase-firestore"}
-com-google-android-gms-play-services-auth = {group = "com.google.android.gms", name ="play-services-auth",version.ref = "google_play_services_version"}
+com-google-firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
+com-google-firebase-auth = { group = "com.google.firebase", name = "firebase-auth" }
+com-google-firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
+com-google-firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx" }
+com-google-android-gms-play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "google_play_services_version" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-datastore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStore_version" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = "coroutine_version" }
+androidx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version = "coroutine_version" }
+androidx-coroutines-play-services = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version = "coroutine_version" }
 androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
