@@ -67,6 +67,7 @@ dependencies {
     implementation(libs.hilt.navigation)
     implementation(libs.hilt.navigation.compose)
     implementation(libs.hilt.work)
+    implementation(libs.io.coil.kt.coil.compose)
     implementation(libs.work.runtime.ktx)
     kapt(libs.com.google.dagger.hilt.compiler)
     implementation(libs.com.squareup.retrofit2.retrofit)

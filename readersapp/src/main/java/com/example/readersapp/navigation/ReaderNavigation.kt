@@ -33,7 +33,8 @@ fun NavigationManager() {
 
         composable(ReaderRoute.CreateAccountScreen.name) {
             CreateUserScreen(
-                navController = navController
+                navController = navController,
+                pressUp = {navController.navigateUp()}
             )
         }
 

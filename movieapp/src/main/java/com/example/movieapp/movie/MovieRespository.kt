@@ -3,6 +3,7 @@ package com.example.movieapp.movie
 import coil.network.HttpException
 import com.example.movieapp.settings.ApplicationSetting
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import java.io.IOException
 import javax.inject.Inject
@@ -10,7 +11,6 @@ import kotlin.Exception
 
 interface MovieRepository {
     suspend fun getMovieList(
-        baseUrl: String,
         page: Int,
         api_key: String
     ): MovieNetworkResult
@@ -18,17 +18,16 @@ interface MovieRepository {
 
 class MovieRepositoryImpl @Inject constructor(
     private val dispatcher: CoroutineDispatcher,
-    private val applicationSetting: ApplicationSetting,
+    val applicationSetting: ApplicationSetting,
     private val movieNetworkDataSource: MovieNetworkDataSource
 ) : MovieRepository {
     override suspend fun getMovieList(
-        baseUrl: String,
         page: Int,
         api_key: String
     ): MovieNetworkResult = withContext(dispatcher) {
         try {
             val response = movieNetworkDataSource.getMoviesListResponse(
-                baseUrl = baseUrl,
+                baseUrl = applicationSetting.getBaseUrl().first().toString(),
                 page = page,
                 api_key = api_key
             )
