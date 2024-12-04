@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">readersApp</string>
+    <string name="sub_title">"Read.Change.Yourself "</string>
+    <string name="label_title">A.Reader</string>
+    <string name="login_label_username">Username</string>
+    <string name="login_label_password">Password</string>
+    <string name="login_label">Login</string>
+    <string name="progrssbar_label">Loading</string>
+    <string name="label_new_user">New User?</string>
+    <string name="label_create_user">Sign Up</string>
+    <string name="placeholder_username">Email</string>
+    <string name="label_submit">Submit</string>
+    <string name="menu_item_profile">Profile</string>
+    <string name="navigate_back">Navigate Back</string>
+    <string name="title">Home</string>
+    <string name="menu_itemlogout">Logout</string>
+    <string name="label_header_current_books">Currently Reading</string>
+    <string name="label_header_books_listed">BooksListed</string>
+    <string name="title_search_screen">Search</string>
+    <string name="toolbar_title_search">Search</string>
+    <string name="label_search">Search</string>
+
+
 </resources>

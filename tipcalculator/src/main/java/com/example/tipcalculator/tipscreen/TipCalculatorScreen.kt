@@ -405,14 +405,6 @@ fun TipSlider(
 }
 
 @Composable
-fun TotalTipCalculation(
-
-) {
-
-}
-
-
-@Composable
 fun ProgressBar(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
